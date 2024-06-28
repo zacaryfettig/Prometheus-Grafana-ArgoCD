@@ -1,0 +1,34 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+spec:
+  project: default
+  source:
+    chart: nginx-ingress
+    repoURL: ghcr.io/nginxinc/charts
+    targetRevision: 1.3.0
+  destination:
+    name: "nginx"
+    namespace: nginx
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  project: default
+  source:
+  - chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    helm:
+      releaseName: kube-prometheus-stack
+  - helm:
+      valueFiles:
+      - prometheusValues.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: prometheus
