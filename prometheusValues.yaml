@@ -950,7 +950,7 @@ alertmanager:
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
-  enabled: false
+  enabled: true
   namespaceOverride: ""
 
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
@@ -984,7 +984,7 @@ grafana:
   ingress:
     ## If true, Grafana Ingress will be created
     ##
-    #enabled: true
+    enabled: true
 
     ## IngressClassName for Grafana Ingress.
     ## Should be provided if Ingress is enable.
@@ -1009,7 +1009,7 @@ grafana:
     hosts: []
 
     ## Path for grafana ingress
-    path: /grafana
+    path: /
 
     ## TLS configuration for grafana Ingress
     ## Secret must be manually created in the namespace
@@ -3213,8 +3213,9 @@ prometheus:
   #     foo:$apr1$OFG3Xybp$ckL0FHDAkoXYIlH9.cysT0
   #     someoneelse:$apr1$DMZX2Z4q$6SbQIfyuLQd.xmo/P0m2c.
 
+#prometheusGui
   ingress:
-    enabled: true
+    enabled: false
 
     # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
