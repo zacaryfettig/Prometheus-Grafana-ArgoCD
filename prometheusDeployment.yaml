@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+spec:
+  project: default
+  sources:
+  - repoURL: "https://prometheus-community.github.io/helm-charts"
+    chart: kube-prometheus-stack
+    targetRevision: 60.4.0
+    helm:
+      valueFiles:
+      - $values/prometheusValues.yaml
+  - repoURL: "https://github.com/zacaryfettig/Prometheus-Grafana-ArgoCD"
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
+    automated:
+      prune: false
+      selfHeal: false
