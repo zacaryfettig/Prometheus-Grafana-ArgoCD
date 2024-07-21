@@ -337,13 +337,7 @@ alertmanager:
         matchers:
           - alertname = "Watchdog"
     receivers:
-    - name: 'Mail Alert'
-      email_configs:
-          - smarthost: 'smtp.gmail.com:587'
-            auth_username: 'zacaryfettig@gmail.com'
-            auth_password: "qvrm kuao fhdz plco"
-            from: 'alertmanager@gmail.com'
-            to: 'zacaryfettig@gmail.com'
+    - name: 'null'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
