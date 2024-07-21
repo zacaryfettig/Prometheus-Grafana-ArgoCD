@@ -337,7 +337,13 @@ alertmanager:
         matchers:
           - alertname = "Watchdog"
     receivers:
-    - name: 'null'
+    - name: 'Mail Alert'
+      email_configs:
+          - smarthost: 'smtp.gmail.com:587'
+            auth_username: 'zacaryfettig@gmail.com'
+            auth_password: "qvrm kuao fhdz plco"
+            from: 'alertmanager@gmail.com'
+            to: 'zacaryfettig@gmail.com'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
@@ -675,7 +681,7 @@ alertmanager:
     ## ConfigMaps is a list of ConfigMaps in the same namespace as the Alertmanager object, which shall be mounted into the Alertmanager Pods.
     ## The ConfigMaps are mounted into /etc/alertmanager/configmaps/.
     ##
-    configMaps: [alertmanager-config]
+    configMaps: []
 
     ## ConfigSecret is the name of a Kubernetes Secret in the same namespace as the Alertmanager object, which contains configuration for
     ## this Alertmanager instance. Defaults to 'alertmanager-' The secret is mounted into /etc/alertmanager/config.
