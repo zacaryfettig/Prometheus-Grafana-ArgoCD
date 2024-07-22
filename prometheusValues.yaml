@@ -339,11 +339,11 @@ alertmanager:
     receivers:
     - name: 'email'
       email_configs:
-          - smarthost: 'smtp.gmail.com:587'
-            auth_username: 'zacaryfettig@gmail.com'
-            auth_password: 'qvrm kuao fhdz plco'
-            from: 'alertmanager@gmail.com'
-            to: 'zacaryfettig@gmail.com'
+        - to: 'zacaryfettig@gmail.com'
+          from: 'alertmanager@gmail.com'
+          smarthost: 'smtp.gmail.com:587'
+          auth_username: 'zacaryfettig@gmail.com'
+          auth_password: 'qvrm kuao fhdz plco'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
