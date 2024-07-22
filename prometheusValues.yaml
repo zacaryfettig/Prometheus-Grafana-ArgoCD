@@ -344,6 +344,7 @@ alertmanager:
           smarthost: 'smtp.gmail.com:587'
           auth_username: 'zacaryfettig@gmail.com'
           auth_password: 'qvrm kuao fhdz plco'
+          auth_identity: 'zacaryfettig@gmail.com'
     templates:
     - '/etc/alertmanager/config/*.tmpl'
 
